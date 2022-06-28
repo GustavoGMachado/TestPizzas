@@ -210,7 +210,16 @@ header {
     font-size: 27px;
     margin-bottom: 5px;
 }
+
+.box2-additional div {
+    background-color: #F77;
+}
+
 .box2-sizes .selected {
+    background-color: #6ac989;
+    color: #FFF;
+}
+.box2-sizes .selected:hover {
     background-color: #6ac989;
     color: #FFF;
 }
@@ -240,7 +249,7 @@ header {
 .sizes-big {
     border-radius: 0px 5px 5px 0px;
 }
-.sizes-small:hover, .sizes-medium:hover, .sizes-big:hover {
+.sizeLineText:hover {
     background-color: var(--color1);
 }
 
@@ -265,7 +274,7 @@ header {
     align-items: center;
 }
 
-.box2-qntd-, .box2-qntd-n, .box2-qntd-- {
+.box2-qntd-, .box2-qntd-pizzas, .box2-qntd-- {
     flex: 1;    
     display: flex;
     justify-content: center;
@@ -274,7 +283,7 @@ header {
     height: 100%;
 }
 
-.box2-qntd-n{
+.box2-qntd-pizzas{
     flex: 1.5;
 }
 
