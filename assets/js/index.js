@@ -1,7 +1,9 @@
 const pizzaArea = document.querySelector('.pizzaArea')
 const menuArea = document.querySelector('.menuArea')
 
+const windowNumberPizzas = document.querySelector('.box2-qntd-pizzas')
 let qntdPizzasWindow = 1
+
 //map rodando todo o vetor de pizzas.js
 pizzaJson.map((item, index) => {
     const pizzaAreaItem = pizzaArea.cloneNode(true)
@@ -18,7 +20,7 @@ pizzaJson.map((item, index) => {
         e.preventDefault()
         let key = e.target.closest('.pizzaArea').getAttribute('key')
 
-        let inputAdditional = createInput(pizzaJson[key].additional.split(','))
+        createInput(pizzaJson[key].additional.split(','))
 
         document.querySelector('.box1-img img').src = pizzaJson[key].img
         document.querySelector('.box1-description .description-title').innerHTML = pizzaJson[key].name
@@ -65,61 +67,33 @@ pizzaJson.map((item, index) => {
 
 const additionalItemArea = document.querySelector('.box2-additional div')
 
+
+
+// clonando os additionals a partir de um item criado no HTML como display:none
 function createInput(additionals) {
-    console.log(additionals)
+    const itemAdditionalDiv = document.querySelector('.itemAdditional')
+    additionals.forEach((itemAdd,indAdd) => {
+        const itemAdditionalClone = itemAdditionalDiv.cloneNode(true)
+        itemAdditionalClone.querySelector('.additionalsCheckbox').setAttribute('key', indAdd)
+        itemAdditionalClone.querySelector('.itemAdditional span').innerHTML = itemAdd
 
-    additionals.forEach((additional, indAdditional) => {
-        let inputBox2Additional = document.createElement("input")
-        inputBox2Additional.type = "checkbox"
-        
-        let spanBox2Additional = document.createElement("span")
-        spanBox2Additional.innerHTML = additional
-        additionalItemArea.appendChild(inputBox2Additional)
-        additionalItemArea.appendChild(spanBox2Additional)
-        
-        console.log(inputBox2Additional)
+        additionalItemArea.appendChild(itemAdditionalClone)
     })
-
-
-
-
-
 }
+// capturando as keys das checkboxes dos additionals marcadas
+// var botaoaaa = document.querySelector('.botaoaaa')
+// botaoaaa.addEventListener('click', (e) => {
+//     let keyOfCheckboxes = []
+//     const checkboxAdditionals = document.querySelectorAll('.box2-additional div .additionalsCheckbox')
+//     checkboxAdditionals.forEach((el) => {
+//         if(el.checked) {
+//             keyOfCheckboxes.push(el.getAttribute('key'))
+//         }
+//     })
+//     console.log(keyOfCheckboxes)
+// })
 
 
-// inputBox2Additional.innerHTML = 'maçã'
-
-
-
-
-
-console.log(document.querySelector('#milho'))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//fechando a window do pedido
-function closePizzaWindow() {
-    document.querySelector('.pizzaWindowArea').style.opacity = 0
-    setTimeout(() => {
-        document.querySelector('.pizzaWindowArea').style.display = 'none'
-    }, 250)
-}
-document.querySelector('.box3-cancel').addEventListener('click', closePizzaWindow)
-
-const windowNumberPizzas = document.querySelector('.box2-qntd-pizzas')
 
 //removendo/adicionando qntd de pizzas
 document.querySelector('.box2-qntd-').addEventListener('click', () => {
@@ -142,6 +116,22 @@ document.querySelectorAll('.sizeLineText').forEach((itSizeText, ind) => {
 })
 
 
+
+//fechando a window do pedido
+function closePizzaWindow() {
+    document.querySelector('.pizzaWindowArea').style.opacity = 0
+    setTimeout(() => {
+        document.querySelector('.pizzaWindowArea').style.display = 'none'
+    }, 250)
+    removeAdditionalClone()
+}
+function removeAdditionalClone() {
+    const itemAdditionalDiv = document.querySelectorAll('.box2-additional .itemAdditional')
+    itemAdditionalDiv.forEach((itemAdds)=>{
+        additionalItemArea.removeChild(itemAdds)
+    })
+}
+document.querySelector('.box3-cancel').addEventListener('click', closePizzaWindow)
 
 
 

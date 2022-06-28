@@ -213,6 +213,17 @@ header {
 
 .box2-additional div {
     background-color: #F77;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.itemAdditional span {
+    margin: 0px 15px 0px 5px;
+}
+
+#itemAddSpace {
+    display: none;
 }
 
 .box2-sizes .selected {
