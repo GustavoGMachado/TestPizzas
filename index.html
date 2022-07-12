@@ -30,123 +30,149 @@
         </div>
     </header>
 
-    <div id="pizzaSpace"> <!-- vai ser display none -->
-        <div class="pizzaArea">
-            <a href="" class="pizzaArea-area1">
-                <div class="pizzaArea-areaImg"><img src=""></div>
-                <div class="pizzaArea-areaBtn">+</div>
-            </a>
+    <div class="container">
 
-            <div>
-                <div id="pizzaArea-price">--</div>
-                <div id="pizzaArea-name">--</div>
-                <div id="pizzaArea-description">--</div>
-            </div>
-        </div>
-    </div>
+        <div id="pizzaSpace"> <!-- vai ser display none -->
+            <div class="pizzaArea">
+                <a href="" class="pizzaArea-area1">
+                    <div class="pizzaArea-areaImg"><img src=""></div>
+                    <div class="pizzaArea-areaBtn">+</div>
+                </a>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <main class="container">
-        <div class="menuArea">
-            <!-- onde as pizzaArea serão adicionadas/clonadas -->
-        </div>
-    </main>
-    
-
-    <div id="itemAddSpace"> <!-- vai ser display none -->
-        <div class="itemAdditional">
-            <input type="checkbox" name="" class="additionalsCheckbox"><span>Milho</span>
-        </div>
-    </div>
-
-    <div class="pizzaWindowArea">
-        <div class="container pizzaWindow">
-            <div class="box4">
-                <h1>Pizzaria BellaBella</h1>
-            </div>
-            <div class="box1">
-                <div class="box1-img"><img src=""></div>
-                <div class="box1-description">
-                    <span class="description-title">title</span>
-                    <span class="description-text">text</span>
+                <div>
+                    <div id="pizzaArea-price">--</div>
+                    <div id="pizzaArea-name">--</div>
+                    <div id="pizzaArea-description">--</div>
                 </div>
             </div>
-            <div class="box2">
-                <div class="box2-additional">
-                    <h1>Adicionais:</h1>
-                    <div>           
-                        <!-- onde os adicionais serão clonados/colocados -->
+        </div>
+
+
+        <div id="menuCartSpace"> <!-- vai ser display none -->
+            <div class="menuCartAreaPizzas-item"> <!-- item a ser duplicado -->
+                <div class="mcItemName"></div>
+                <div class="mcItemDescription">ingredientes</div>
+                <div class="mcItemAdd">adiconias</div>
+                <div class="mcItemAreaPrice">
+                    <div class="mcItemAreaPrice-control">aaaaa</div>
+                    <div class="mcItemAreaPrice-value">bbbbb</div>
+                </div>
+            </div>  
+        </div>
+        
+
+
+
+        <div class="menuCart menuCartNone">
+            <div id="menuCartArea">
+                <div id="menuCartAreaPizzas">
+                    <!-- pizzas do cliente do cart virão para cá (clones)-->
+            
+                </div>
+
+
+
+                <div id="menuCartAreaCalc">
+                    <!-- calculos em cima do pedido -->
+                </div>
+                <div id="menuCartAreaConfirm">
+                    <!-- confirmação/limpar carrinho -->
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <main class="container">
+            <div class="menuArea">
+                <!-- onde as pizzaArea serão adicionadas/clonadas -->
+            </div>
+        </main>
+        
+
+        <div id="itemAddSpace"> <!-- vai ser display none -->
+            <div class="itemAdditional">
+                <input type="checkbox" name="" class="additionalsCheckbox"><span>Milho</span>
+            </div>
+        </div>
+
+        <div class="pizzaWindowArea">
+            <div class="container pizzaWindow">
+                <div class="box4">
+                    <h1>Pizzaria BellaBella</h1>
+                </div>
+                <div class="box1">
+                    <div class="box1-img"><img src=""></div>
+                    <div class="box1-description">
+                        <span class="description-title">title</span>
+                        <span class="description-text">text</span>
                     </div>
                 </div>
-                <div class="box2-size">
-                    <h1>Tamanho:</h1>
-                    <div class="box2-sizes">
-                        
-                        <div data-key="0" class="sizes-small sizeLineText">Pequena</div>
-                        <div data-key="1" class="sizes-medium sizeLineText">Média</div>
-                        <div data-key="2" class="sizes-big sizeLineText selected">Grande</div>
-
-                        <div class="sizes-smallL2 sizeLine">---</div>
-                        <div class="sizes-mediumL2 sizeLine">---</div>
-                        <div class="sizes-bigL2 sizeLine">---</div>
-                        
-                        <div class="price-smallL3 priceLine">---</div>
-                        <div class="price-mediumL3 priceLine">---</div>
-                        <div class="price-bigL3 priceLine">---</div>
-                        
+                <div class="box2">
+                    <div class="box2-additional">
+                        <h1>Adicionais:</h1>
+                        <div>           
+                            <!-- onde os adicionais serão clonados/colocados -->
+                        </div>
                     </div>
-                </div>
-                <div class="box2-price">
-                    <h1>Preço</h1>
-                    <div class="box2-spaces">
-                        <span></span>
-                        <div class="box2-qntd">
-                            <div class="box2-qntd-">-</div>
-                            <div class="box2-qntd-pizzas"></div>
-                            <div class="box2-qntd--">+</div>
+                    <div class="box2-size">
+                        <h1>Tamanho:</h1>
+                        <div class="box2-sizes">
+                            
+                            <div data-key="0" class="sizes-small sizeLineText">Pequena</div>
+                            <div data-key="1" class="sizes-medium sizeLineText">Média</div>
+                            <div data-key="2" class="sizes-big sizeLineText selected">Grande</div>
+
+                            <div class="sizes-smallL2 sizeLine">---</div>
+                            <div class="sizes-mediumL2 sizeLine">---</div>
+                            <div class="sizes-bigL2 sizeLine">---</div>
+                            
+                            <div class="price-smallL3 priceLine">---</div>
+                            <div class="price-mediumL3 priceLine">---</div>
+                            <div class="price-bigL3 priceLine">---</div>
+                            
+                        </div>
+                    </div>
+                    <div class="box2-price">
+                        <h1>Preço</h1>
+                        <div class="box2-spaces">
+                            <span></span>
+                            <div class="box2-qntd">
+                                <div class="box2-qntd-">-</div>
+                                <div class="box2-qntd-pizzas"></div>
+                                <div class="box2-qntd--">+</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="box3">
-                <div class="box3-btns">
-                    <div class="box3-add">Adicionar ao carrinho</div>
-                    <div class="box3-cancel">Cancelar</div>
+                <div class="box3">
+                    <div class="box3-btns">
+                        <div class="box3-add">Adicionar ao carrinho</div>
+                        <div class="box3-cancel">Cancelar</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        
+
+
+
+
+
+
+
+
+
 
     
-
-
-
-
-
-
-
-
-
-
-
-
+    </div>
 
 
 

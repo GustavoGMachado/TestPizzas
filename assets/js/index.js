@@ -179,7 +179,7 @@ document.querySelector('.box3-add').addEventListener('click', () => {
         } else {
             shoppingCart.push({
                 identifier,
-                id: pizzaJson[keyOfPizzaJson].id,
+                id: pizzaJson[keyOfPizzaJson],
                 size: sizeInBox2,
                 qntd: qntdPizzasWindow,
                 price: Number(priceInBox2),
@@ -189,6 +189,23 @@ document.querySelector('.box3-add').addEventListener('click', () => {
     
     closePizzaWindow()
 })
+
+
+const menuCartAreaPizzasItem = document.querySelector('.menuCartAreaPizzas-item')
+const menuCartAreaPizzasSpace = document.querySelector('#menuCartAreaPizzas')
+function uptadeCart() {
+    if (shoppingCart.length > 0) {
+        document.querySelector('.menuCart').classList.remove('menuCartNone')
+        shoppingCart.forEach((it, ind) => {
+            const itemCartClone = menuCartAreaPizzasItem.cloneNode(true)
+            
+            menuCartAreaPizzasSpace.append(itemCartClone)
+        })
+    } else {
+        document.querySelector('.menuCart').classList.add('menuCartNone')
+
+    }
+}
 
 
 
