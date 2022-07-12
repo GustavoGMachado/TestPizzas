@@ -1,5 +1,5 @@
 let pizzaJson = [
-    {id: 1, name:'Mussarela', img:'assets/img/pizza.png', price:[15.00, 28.00, 30.00], sizes:['100g', '530g', '860g'], description:'Mussarela, palmito, azeitonas, pepperoni, presunto, milho, orégano e ovo', additional:'Mussarela,Palmito,Azeitonas,Calabresa,Bacon'},
+    {id: 1, name:'Mussarela', img:'assets/img/pizza.png', price:[15.00, 28.00, 30.20], sizes:['100g', '530g', '860g'], description:'Mussarela, palmito, azeitonas, pepperoni, presunto, milho, orégano e ovo', additional:'Mussarela,Palmito,Azeitonas,Calabresa,Bacon'},
     {id: 2, name:'Calabresa', img:'assets/img/pizza2.png', price:[15.00, 25.00, 35.00], sizes:['320g', '530g', '860g'], description:'Mussarela, palmito, azeitonas, pepperoni, presunto, milho, orégano e ovo', additional:'Mussarela,Palmito,Azeitonas,Calabresa,Bacon'},
     {id: 3, name:'Quatro Queijos', img:'assets/img/pizza3.png', price:[15.00, 25.00, 30.00], sizes:['320g', '530g', '860g'], description:'Mussarela, palmito, azeitonas, pepperoni, presunto, milho, orégano e ovo', additional:'Mussarela,Palmito,Azeitonas,Calabresa,Bacon'},
     {id: 4, name:'Americana', img:'assets/img/pizza4.png', price:[15.00, 25.00, 30.00], sizes:['320g', '530g', '860g'], description:'Mussarela, palmito, azeitonas, pepperoni, presunto, milho, orégano e ovo', additional:'Mussarela,Palmito,Azeitonas,Calabresa,Bacon'},

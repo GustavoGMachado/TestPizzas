@@ -1,8 +1,11 @@
 const pizzaArea = document.querySelector('.pizzaArea')
 const menuArea = document.querySelector('.menuArea')
 
+
 const windowNumberPizzas = document.querySelector('.box2-qntd-pizzas')
 let qntdPizzasWindow = 1
+let keyOfPizzaJson = 0
+let shoppingCart = []
 
 //map rodando todo o vetor de pizzas.js
 pizzaJson.map((item, index) => {
@@ -19,6 +22,7 @@ pizzaJson.map((item, index) => {
     pizzaAreaItem.querySelector('a').addEventListener('click', (e) => {
         e.preventDefault()
         let key = e.target.closest('.pizzaArea').getAttribute('key')
+        keyOfPizzaJson = key
 
         createInput(pizzaJson[key].additional.split(','))
 
@@ -33,9 +37,10 @@ pizzaJson.map((item, index) => {
 
         const sizeLineText = document.querySelectorAll('.sizeLineText')
         sizeLineText.forEach((itSizeText, ind) => {
-            //setando tamanho grande por padrão
+            //setando tamanho e preço da grande por padrão
             if(ind === 2) {
                 itSizeText.classList.add('selected')
+                document.querySelector('.box2-spaces span').innerHTML = `R$ ${pizzaJson[key].price[2].toFixed(2)}`
             }
         })
         //conferir valores depois, pensar na ideida de juntar, aproveitar o forEach da sizeLine no priceLine
@@ -49,7 +54,7 @@ pizzaJson.map((item, index) => {
         })
 
         
-        
+
 
 
 
@@ -81,17 +86,16 @@ function createInput(additionals) {
     })
 }
 // capturando as keys das checkboxes dos additionals marcadas
-// var botaoaaa = document.querySelector('.botaoaaa')
-// botaoaaa.addEventListener('click', (e) => {
-//     let keyOfCheckboxes = []
-//     const checkboxAdditionals = document.querySelectorAll('.box2-additional div .additionalsCheckbox')
-//     checkboxAdditionals.forEach((el) => {
-//         if(el.checked) {
-//             keyOfCheckboxes.push(el.getAttribute('key'))
-//         }
-//     })
-//     console.log(keyOfCheckboxes)
-// })
+function getAdditionals() {
+    let keyOfCheckboxes = []
+    const checkboxAdditionals = document.querySelectorAll('.box2-additional div .additionalsCheckbox')
+    checkboxAdditionals.forEach((el) => {
+        if(el.checked) {
+            keyOfCheckboxes.push(el.getAttribute('key'))
+        }
+    })
+    return keyOfCheckboxes
+}
 
 
 
@@ -101,10 +105,12 @@ document.querySelector('.box2-qntd-').addEventListener('click', () => {
         qntdPizzasWindow--
     }
     windowNumberPizzas.innerHTML = qntdPizzasWindow
+    setPreçoBox3()
 })
 document.querySelector('.box2-qntd--').addEventListener('click', () => {
     qntdPizzasWindow++
     windowNumberPizzas.innerHTML = qntdPizzasWindow
+    setPreçoBox3()
 })
 
 //setando o tamanho da pizza
@@ -112,8 +118,18 @@ document.querySelectorAll('.sizeLineText').forEach((itSizeText, ind) => {
     itSizeText.addEventListener('click', (e) => {
         document.querySelector('.sizeLineText.selected').classList.remove('selected')
         itSizeText.classList.add('selected')
+        setPreçoBox3()
     })
 })
+//mexendo no preço da pizza no box2-price
+function setPreçoBox3() {
+    document.querySelectorAll('.sizeLineText').forEach((itSizeText, ind) => {    
+        let selectedSize = itSizeText.classList.contains('selected')      
+        if(selectedSize) {
+            document.querySelector('.box2-spaces span').innerHTML = `R$ ${(pizzaJson[keyOfPizzaJson].price[ind] * qntdPizzasWindow).toFixed(2)}`
+        }
+    })
+}
 
 
 
@@ -134,6 +150,45 @@ function removeAdditionalClone() {
 document.querySelector('.box3-cancel').addEventListener('click', closePizzaWindow)
 
 
+
+//adicionando no carrinho
+document.querySelector('.box3-add').addEventListener('click', () => {
+    //getando o valor
+    let priceInBox2 = document.querySelector('.box2-spaces span').innerHTML.replace('R$ ','')
+    //getando o tamanho
+    let sizeInBox2 = document.querySelector('.sizeLineText.selected').getAttribute('data-key')
+    
+    //getando os adicionais
+    let cap = getAdditionals()
+
+    //setando identifier para ver se a pizza configurada já existe no carrinho, se sim, ++ em qntd
+        //criando um código para a pizza
+        let identifier = pizzaJson[keyOfPizzaJson].id +'@'+sizeInBox2
+        for (let i of cap) {
+            identifier += '&' + i
+        }
+
+        //conferindo se esse código já existe em algum objeto dentro do array shoppingCart
+        let key = shoppingCart.findIndex((item) => {
+            //se caso existir, retorna o indice no array shopping cart, se nao retorna -1
+            return item.identifier === identifier
+        })
+
+        if(key > -1) {
+            shoppingCart[key].qntd += qntdPizzasWindow
+        } else {
+            shoppingCart.push({
+                identifier,
+                id: pizzaJson[keyOfPizzaJson].id,
+                size: sizeInBox2,
+                qntd: qntdPizzasWindow,
+                price: Number(priceInBox2),
+                additionals: cap
+            })
+        }
+    
+    closePizzaWindow()
+})
 
 
 
