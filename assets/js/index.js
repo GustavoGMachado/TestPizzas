@@ -252,7 +252,7 @@ function uptadeCart() {
                 if (it.qntd > 1) {
                     it.qntd--
                     uptadeCart()
-                    //chegar no zero remover, usar o ind e splice() para isso
+                    //chegar no zero remover, usar o indg e splice() para isso
                 }
                 return
             })
