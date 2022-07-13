@@ -24,7 +24,7 @@ pizzaJson.map((item, index) => {
         let key = e.target.closest('.pizzaArea').getAttribute('key')
         keyOfPizzaJson = key
 
-        createInput(pizzaJson[key].additional.split(','))
+        createInput(pizzaJson[key].additional)
 
         document.querySelector('.box1-img img').src = pizzaJson[key].img
         document.querySelector('.box1-description .description-title').innerHTML = pizzaJson[key].name
@@ -179,7 +179,7 @@ document.querySelector('.box3-add').addEventListener('click', () => {
         } else {
             shoppingCart.push({
                 identifier,
-                id: pizzaJson[keyOfPizzaJson],
+                id: pizzaJson[keyOfPizzaJson].id,
                 size: sizeInBox2,
                 qntd: qntdPizzasWindow,
                 price: Number(priceInBox2),
@@ -187,6 +187,7 @@ document.querySelector('.box3-add').addEventListener('click', () => {
             })
         }
     
+    uptadeCart()
     closePizzaWindow()
 })
 
@@ -194,19 +195,102 @@ document.querySelector('.box3-add').addEventListener('click', () => {
 const menuCartAreaPizzasItem = document.querySelector('.menuCartAreaPizzas-item')
 const menuCartAreaPizzasSpace = document.querySelector('#menuCartAreaPizzas')
 function uptadeCart() {
+
     if (shoppingCart.length > 0) {
         document.querySelector('.menuCart').classList.remove('menuCartNone')
+        menuCartAreaPizzasSpace.innerHTML = ''
         shoppingCart.forEach((it, ind) => {
+            let stringOfAdditionals = 'Adicionais: '
             const itemCartClone = menuCartAreaPizzasItem.cloneNode(true)
+            let pizzaItem = pizzaJson.find((item) => {
+                return item.id == it.id
+            })
+
+            let sizeWord
+            switch (it.size) {
+                case "0":
+                    sizeWord = "Pequena"
+                    it.price = it.qntd * pizzaItem.price[0]                  
+                    break;
+                case "1":
+                    sizeWord = "Média"
+                    it.price = it.qntd * pizzaItem.price[1]
+                    break;
+                case "2":
+                    sizeWord = "Grande"
+                    it.price = it.qntd * pizzaItem.price[2]
+                    break;
+            }
+            
+
+            itemCartClone.querySelector('.mcItemName').innerHTML = `${pizzaItem.name} (${sizeWord.slice(0,1)})`
+            itemCartClone.querySelector('.mcItemDescription').innerHTML = pizzaItem.description
+
+            //mostrando os adicionais
+            if (it.additionals.length > 0) {
+                for (let addRequest of it.additionals) {
+                    for (let i in pizzaItem.additional) {
+                        if (addRequest === i) {
+                            console.log(pizzaItem.additional[i])
+                            stringOfAdditionals += pizzaItem.additional[i]+', ' 
+                        }
+                    }
+                }
+                itemCartClone.querySelector('.mcItemAdd').innerHTML = stringOfAdditionals.slice(0,-2)
+            } else {
+                itemCartClone.querySelector('.mcItemAdd').innerHTML = 'Sem adicionais'
+            }
+
+            //trabalhando com as qntd's e price's
+
+            itemCartClone.querySelector('.controlGeneralNum').innerHTML = it.qntd
+            itemCartClone.querySelector('.controlGeneralAdd').addEventListener('click', () => {
+                it.qntd++
+                uptadeCart()
+            })
+            itemCartClone.querySelector('.controlGeneralRem').addEventListener('click', () => {
+                if (it.qntd > 1) {
+                    it.qntd--
+                    uptadeCart()
+                    //chegar no zero remover, usar o ind e splice() para isso
+                }
+                return
+            })
+
+            itemCartClone.querySelector('.mcItemAreaPrice-value').innerHTML = 'R$ ' + it.price.toFixed(2)
             
             menuCartAreaPizzasSpace.append(itemCartClone)
         })
     } else {
         document.querySelector('.menuCart').classList.add('menuCartNone')
-
     }
+
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function clearCart() {
+    shoppingCart = []
+}
 
 
 

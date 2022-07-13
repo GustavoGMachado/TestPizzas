@@ -284,7 +284,7 @@ header {
     align-items: center;
 }
 
-.box2-qntd-, .box2-qntd-pizzas, .box2-qntd-- {
+.box2-qntd-, .box2-qntd-pizzas, .box2-qntd--, .controlGeneralRem, .controlGeneralNum, .controlGeneralAdd {
     flex: 1;    
     display: flex;
     justify-content: center;
@@ -293,8 +293,9 @@ header {
     height: 100%;
 }
 
-.box2-qntd-pizzas{
+.box2-qntd-pizzas, .controlGeneralNum{
     flex: 1.5;
+    cursor: default;
 }
 
 .box2-qntd-:hover {
@@ -390,33 +391,72 @@ header {
     height: 50px;
     background-color: #F77;
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-columns: 2fr 7fr 2fr;
     grid-template-rows: 1fr 1fr;
 }
 
 .mcItemName {
     grid-column: 1/2;
     background-color: #eee;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
 }
 .mcItemDescription {
-    grid-column: 2/4;
+    grid-column: 2/3;
     background-color: aqua;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
 }
 .mcItemAdd {
-    grid-column: 1/4;
+    grid-column: 1/3;
     grid-row: 2/2;
     background-color: aquamarine;
-    
+    font-size: 14px;
+    display: flex;
+    align-items: center;
 }
 .mcItemAreaPrice {
-    grid-column: 4/4;
+    grid-column: 3/4;
     grid-row: 1/3;
     background-color: red;
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
 }
+.mcItemAreaPrice-control {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+}
+.btn-controlGeneral{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.mcItemAreaPrice-value {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFF;
+
+}
 
 
 
