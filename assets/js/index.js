@@ -192,16 +192,16 @@ document.querySelector('.box3-add').addEventListener('click', () => {
 })
 
 
-const menuCartAreaPizzasItem = document.querySelector('.menuCartAreaPizzas-item')
-const menuCartAreaPizzasSpace = document.querySelector('#menuCartAreaPizzas')
+const shoppingCartAreaPizzasItem = document.querySelector('.shoppingCartAreaPizzas-item')
+const shoppingCartAreaPizzasSpace = document.querySelector('#shoppingCartAreaPizzas')
 function uptadeCart() {
 
     if (shoppingCart.length > 0) {
-        document.querySelector('.menuCart').classList.remove('menuCartNone')
-        menuCartAreaPizzasSpace.innerHTML = ''
+        document.querySelector('.shoppingCart').classList.remove('shoppingCartNone')
+        shoppingCartAreaPizzasSpace.innerHTML = ''
         shoppingCart.forEach((it, ind) => {
             let stringOfAdditionals = 'Adicionais: '
-            const itemCartClone = menuCartAreaPizzasItem.cloneNode(true)
+            const itemCartClone = shoppingCartAreaPizzasItem.cloneNode(true)
             let pizzaItem = pizzaJson.find((item) => {
                 return item.id == it.id
             })
@@ -223,7 +223,7 @@ function uptadeCart() {
             }
             
 
-            itemCartClone.querySelector('.mcItemName').innerHTML = `${pizzaItem.name} (${sizeWord.slice(0,1)})`
+            itemCartClone.querySelector('.mcItemName').innerHTML = `${pizzaItem.name} (${sizeWord})`
             itemCartClone.querySelector('.mcItemDescription').innerHTML = pizzaItem.description
 
             //mostrando os adicionais
@@ -231,7 +231,6 @@ function uptadeCart() {
                 for (let addRequest of it.additionals) {
                     for (let i in pizzaItem.additional) {
                         if (addRequest === i) {
-                            console.log(pizzaItem.additional[i])
                             stringOfAdditionals += pizzaItem.additional[i]+', ' 
                         }
                     }
@@ -242,7 +241,6 @@ function uptadeCart() {
             }
 
             //trabalhando com as qntd's e price's
-
             itemCartClone.querySelector('.controlGeneralNum').innerHTML = it.qntd
             itemCartClone.querySelector('.controlGeneralAdd').addEventListener('click', () => {
                 it.qntd++
@@ -252,18 +250,28 @@ function uptadeCart() {
                 if (it.qntd > 1) {
                     it.qntd--
                     uptadeCart()
-                    //chegar no zero remover, usar o indg e splice() para isso
+                } else if (it.qntd === 1) {
+                    shoppingCart.splice(ind, 1)
+                    uptadeCart()
                 }
                 return
             })
 
             itemCartClone.querySelector('.mcItemAreaPrice-value').innerHTML = 'R$ ' + it.price.toFixed(2)
             
-            menuCartAreaPizzasSpace.append(itemCartClone)
+            shoppingCartAreaPizzasSpace.append(itemCartClone)
         })
     } else {
-        document.querySelector('.menuCart').classList.add('menuCartNone')
+        document.querySelector('.shoppingCart').classList.add('shoppingCartNone')
     }
+
+    let totalValue = 0
+
+    for (let value of shoppingCart) {
+        totalValue += value.price
+    }
+    
+    document.querySelector('#totalPrice').innerHTML = `R$ ${totalValue.toFixed(2)}`
 
 }
 
