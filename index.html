@@ -36,36 +36,36 @@
                 <!-- onde as pizzaArea serão adicionadas/clonadas -->
             </div>
         </main>
+        <div id="fixed-btn">
+            <span>🛒</span>
+            <span id="fixed-btnRed">1</span>
+        </div>
     </section>
 
     <section>
-        <div class="shoppingCart shoppingCartNone">
+        <div class="shoppingCart" data-name="shoppingCart">
             <div id="shoppingCartTitle">CARRINHO DE COMPRAS</div>
             <div id="shoppingCartArea">
-                <div id="shoppingCartAreaPizzas">
+                <div id="shoppingCartAreaPizzas" class="container"> SEM ITENS NO CARRINHO, MONTE O SEU PEDIDO ACIMA!
                     <!-- pizzas do cliente do cart virão para cá (clones)-->
             
                 </div>
-
-
                 <div id="shoppingCartCalc">
                     <!-- calculos em cima do pedido -->
-                    <div id="shoppingCartAreaCalc">
+                    <div id="shoppingCartAreaCalc" class="container">
                         <div>Valor total: </div>
-                        <div id="totalPrice"></div>
+                        <div id="totalPrice">R$ 0.00</div>
                     </div>        
                 </div>
                 <div id="shoppingCartAreaConfirm">
                     <!-- confirmação/limpar carrinho -->
-                    <div id="btn-closePurchase">Adicionar ao carrinho</div>
-                    <div id="btn-cancelPurchase">Cancelar</div>
+                    <div id="btn-closePurchase">Finalizar pedido</div>
+                    <div id="btn-cancelPurchase">Limpar carrinho</div>
                 </div>
             </div>
         </div>
     </section>
      
-  
-    
 
 
     <div id="pizzaSpace"> <!-- vai ser display none -->
@@ -88,7 +88,7 @@
 
     <div id="itemAddSpace"> <!-- vai ser display none -->
         <div class="itemAdditional">
-            <input type="checkbox" name="" class="additionalsCheckbox"><span>Milho</span>
+            <input type="checkbox" name="" class="additionalsCheckbox"><span></span>
         </div>
     </div>
 
@@ -152,7 +152,6 @@
 
 
 
-
     <div id="shoppingCartSpace"> <!-- vai ser display none -->
         <div class="shoppingCartAreaPizzas-item"> <!-- item a ser duplicado -->
             <div class="mcItemName"></div>
@@ -169,24 +168,20 @@
                 <div class="mcItemAreaPrice-value"></div>
             </div>
         </div>  
-    </div>
-
-
-
-
-
-
-
-
-
-    
-    
+    </div>  
 
     <footer>
-        <div id="areaFooter"></div>
+        <div id="areaFooter" class="container">
+            <div id="areaFooterText">
+                <span>📍 Endereçoooooo oooo ooo ooo</span>
+                <span>🌐 redes sociais</span>
+                <span>📞 +55 00 00000-0000</span>
+            </div>
+            <div id="areaFooterImg">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.1296958422035!2d-47.93419238452844!3d-15.849779328543567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a2f92848d83f7%3A0x745eb5d82f89b43c!2sDF-047%20-%20Bras%C3%ADlia%2C%20DF%2C%2070297-400!5e0!3m2!1spt-BR!2sbr!4v1658073094176!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
     </footer>
-
-
 
     <script src="assets/js/pizzas.js"></script>
     <script src="assets/js/index.js"></script>

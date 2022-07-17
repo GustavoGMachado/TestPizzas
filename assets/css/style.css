@@ -12,8 +12,11 @@
     --color2: rgb(116, 58, 58);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    /* background-color: var(--color1); */
     background: linear-gradient(var(--color1), white);
 }
 
@@ -37,7 +40,6 @@ header {
 #leftHeaderArea, #rightHeaderArea {
     padding: 0px 10px;
     width: 50%;
-    /*height: 100%;*/
     display: flex;
     align-items: center;
     color: #FFF;
@@ -55,11 +57,6 @@ header {
 #rightHeaderArea {
     justify-content: end;
 }
-
-
-
-
-
 
 #pizzaSpace, #shoppingCartSpace {
     display: none;
@@ -98,7 +95,6 @@ header {
     box-shadow:0px 10px 50px rgba(0, 0, 0, 0.4);
     border-radius: 125px;
 }
-
 .pizzaArea-areaImg img {
     width: 102%;
     height: 102%;
@@ -120,11 +116,6 @@ header {
 .pizzaArea-area1:hover .pizzaArea-areaBtn{
     background-color: var(--color2);
 }
-
-
-
-
-
 
 .pizzaWindowArea {
     position:fixed;
@@ -152,20 +143,14 @@ header {
     /* padding: 3px; */
 }
 
-
 .box1, .box2, .box3, .box4 {
     background-color: #FFF;
 }
-
-/* cor azul */
 .box1 {
-    /* background-color: blue; */
     display: flex;
     flex-direction: column;
-    /* border-radius: 15px 0px 0px 0px; */
 }
 .box1-img, .box1-description {
-    /* background-color: beige; */
     margin: 1px;
 }
 .box1-img {
@@ -189,19 +174,12 @@ header {
     font-weight: bold;
 }
 
-
-
-/* cor roxa */
 .box2 {
-    /* background-color: blueviolet; */
     display: flex;
     flex-direction: column;
-    /* border-radius: 0px 15px 0px 0px; */
-    /* padding-top: 30px; */
 }
 .box2-additional, .box2-size, .box2-price {
     flex: 1;
-    /* background-color: beige; */
     margin: 1px;
     display: flex;
     flex-direction: column;
@@ -211,13 +189,11 @@ header {
     font-size: 27px;
     margin-bottom: 5px;
 }
-
 .box2-additional div {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
 }
-
 .itemAdditional span {
     margin: 0px 15px 0px 5px;
 }
@@ -234,7 +210,6 @@ header {
     background-color: #6ac989;
     color: #FFF;
 }
-
 .box2-sizes {
     display: grid;
     grid-template-columns:  1fr 1fr 1fr;
@@ -264,8 +239,6 @@ header {
     background-color: var(--color1);
 }
 
-
-
 .box2-spaces {
     display: flex;
     justify-content: left;
@@ -284,7 +257,6 @@ header {
     justify-content: center;
     align-items: center;
 }
-
 .box2-qntd-, .box2-qntd-pizzas, .box2-qntd--, .controlGeneralRem, .controlGeneralNum, .controlGeneralAdd {
     flex: 1;    
     display: flex;
@@ -293,12 +265,10 @@ header {
     cursor: pointer;
     height: 100%;
 }
-
 .box2-qntd-pizzas, .controlGeneralNum{
     flex: 1.5;
     cursor: default;
 }
-
 .box2-qntd-:hover {
     background-color: var(--color2);
     color: #FFF;
@@ -310,24 +280,18 @@ header {
     border-radius: 0px 5px 5px 0px;
 }
 
-
-/* cor preta */
 .box3 {
     grid-column: 1/3;
-    /* background-color: #eee; */
-    /* background-color: black; */
     border-radius: 0px 0px 15px 15px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .box3-btns {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .box3-add, .box3-cancel, #btn-closePurchase, #btn-cancelPurchase {
     height: 40px;
     width: 200px;
@@ -339,7 +303,6 @@ header {
     align-items: center;
     cursor: pointer;
 }
-
 .box3-add, #btn-closePurchase {
     margin-right: 80px;
     background-color: #6ac989;
@@ -347,7 +310,6 @@ header {
 .box3-add:hover, .box3-cancel:hover, #btn-closePurchase:hover, #btn-cancelPurchase:hover {
     background-color: var(--color2);
 }
-
 
 .box4 {
     grid-column: 1/3;
@@ -358,14 +320,10 @@ header {
     justify-content: center;
     align-items: center;
 }
-
 .box4 h1 {
     color: #FFF;
     font-size: 35px;
 }
-
-
-
 
 .shoppingCart {
     background-color: white;
@@ -381,11 +339,9 @@ header {
     font-size: 20px;
     padding: 8px 0px;
 }
-
 #shoppingCartArea {
     padding: 15px 0px;
 }
-
 .shoppingCartAreaPizzas-item {
     margin: auto;
     margin-bottom: 15px;
@@ -393,6 +349,9 @@ header {
     display: grid;
     grid-template-columns: 1.8fr 7fr 2fr;
     grid-template-rows: 1fr 1fr 1fr;
+}
+#shoppingCartAreaPizzas {
+    text-align: center;
 }
 
 .mcItemName {
@@ -404,6 +363,7 @@ header {
     border-radius: 8px 0px 0px 0px;
     padding: 2px;
     padding-left: 5px;
+    font-weight: bold;
 }
 .mcItemDescription {
     grid-column: 1/3;
@@ -448,7 +408,6 @@ header {
     width: 50px;
 }
 
-
 .mcItemAreaPrice-value {
     width: 60%;
     display: flex;
@@ -468,36 +427,216 @@ header {
     justify-content: space-between;
 }
 
-
-
-
-
 #shoppingCartAreaConfirm {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 15px;
 }
+#fixed-btn {
+    position: fixed;
+    background-color: rgb(0, 183, 255);
+    width: 60px;
+    height: 60px;
+    bottom: 35px;
+    right: 30px;
+    border-radius: 30px;
+    box-shadow:1px 1px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#fixed-btn span:nth-child(1) {
+    font-size: 30px;
+}
+#fixed-btnRed {
+    position: fixed;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    bottom: 78px;
+    right: 73px;
+    border-radius: 10px;
+    box-shadow:1px 1px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 15px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#areaFooter {
+footer {
     background-color: var(--color0);
     width: 100%;
-    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#areaFooter {
+    margin: 10px 0px;
+    width: 85%;  
+    height: 85%;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#areaFooterText {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+}
+#areaFooterText span{
+    font-size: 14px;
+}
+#areaFooterImg {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+#areaFooterImg iframe {
+    border-radius: 5px;
+    margin: 10px 0px;
+    width: 300px;
+    height: 200px;
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .pizzaWindow {
+        width: 90%;
+    }
+
+    .shoppingCartAreaPizzas-item {
+        width: 90%;
+    }
+
+    #shoppingCartAreaCalc {
+        width: 90%;
+    }
+}
+
+@media (max-width: 900px) {
+    .shoppingCartAreaPizzas-item {
+        grid-template-columns: 1.5fr 7fr 2.8fr;
+    }
+
+    .pizzaArea-areaImg {
+        width: 180px;
+        height: 180px;
+        border-radius: 90px;
+    }
+
+    .pizzaArea {
+        width: 200px;
+        height: 400px;
+        margin: 35px;
+        text-align: center;
+    }
+
+    .pizzaArea div div {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 800px) {
+    #AreaHLText {
+        font-size: 25px;
+    }
+
+    .box2-additional h1, .box2-size h1, .box2-price h1, .box1-description .description-title {
+        font-size: 20px;
+    }
+
+    .sizes-small, .sizes-medium, .sizes-big, .description-text, .itemAdditional span, .box2-qntd div {
+        font-size: 16px;
+    }
+
+    .box2-sizes .sizeLine, .box2-sizes .priceLine {
+        font-size: 10px;
+    }
+
+    .box1-img img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .box2-qntd {
+        height: 25px;
+    }
+
+    .box2-spaces span {
+        width: 85px;
+        font-size: 16px;
+    }
+
+    .box3-add, .box3-cancel {
+        width: 180px;
+        font-size: 16px;
+    }
+
+    .shoppingCartAreaPizzas-item {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+
+    .mcItemName {
+        border-radius: 8px 8px 0px 0px;
+    }
+
+    .mcItemDescription {
+        grid-column: 1/3;
+        grid-row: 2/3;
+    }
+
+    .mcItemAdd {
+        grid-column: 1/3;
+        grid-row: 3/4;
+        border-radius: 0px;
+    }
+    
+    .mcItemAreaPrice {
+        grid-column: 1/3;
+        grid-row: 4/5;
+        border-radius: 0px 0px 8px 8px;
+    }
+
+    #areaFooter {
+        flex-direction: column-reverse;
+    }
+}
+
+@media (max-width: 500px) {
+    .pizzaWindowArea {
+        background-color: white;
+    }
+
+    .pizzaWindow {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .box1, .box2, .box3, .box4 {
+        border-radius: 0;
+        margin-bottom: 10px;
+    }
+
+    .box3-btns, #shoppingCartAreaConfirm {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .box3-add, .box3-cancel, #btn-closePurchase, #btn-cancelPurchase {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
 }

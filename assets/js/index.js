@@ -53,13 +53,6 @@ pizzaJson.map((item, index) => {
             itPrice.innerHTML = `R$ ${pizzaJson[key].price[ind].toFixed(2)}`            
         })
 
-        
-
-
-
-
-
-        
         document.querySelector('.pizzaWindowArea').style.opacity = 0
         document.querySelector('.pizzaWindowArea').style.display = 'flex'
         setTimeout(() => {
@@ -71,8 +64,6 @@ pizzaJson.map((item, index) => {
 })
 
 const additionalItemArea = document.querySelector('.box2-additional div')
-
-
 
 // clonando os additionals a partir de um item criado no HTML como display:none
 function createInput(additionals) {
@@ -96,8 +87,6 @@ function getAdditionals() {
     })
     return keyOfCheckboxes
 }
-
-
 
 //removendo/adicionando qntd de pizzas
 document.querySelector('.box2-qntd-').addEventListener('click', () => {
@@ -131,8 +120,6 @@ function setPreçoBox3() {
     })
 }
 
-
-
 //fechando a window do pedido
 function closePizzaWindow() {
     document.querySelector('.pizzaWindowArea').style.opacity = 0
@@ -148,8 +135,6 @@ function removeAdditionalClone() {
     })
 }
 document.querySelector('.box3-cancel').addEventListener('click', closePizzaWindow)
-
-
 
 //adicionando no carrinho
 document.querySelector('.box3-add').addEventListener('click', () => {
@@ -190,7 +175,6 @@ document.querySelector('.box3-add').addEventListener('click', () => {
     uptadeCart()
     closePizzaWindow()
 })
-
 
 const shoppingCartAreaPizzasItem = document.querySelector('.shoppingCartAreaPizzas-item')
 const shoppingCartAreaPizzasSpace = document.querySelector('#shoppingCartAreaPizzas')
@@ -260,45 +244,51 @@ function uptadeCart() {
             itemCartClone.querySelector('.mcItemAreaPrice-value').innerHTML = 'R$ ' + it.price.toFixed(2)
             
             shoppingCartAreaPizzasSpace.append(itemCartClone)
+
+            document.querySelector('#fixed-btn').style.display = 'flex'
         })
     } else {
-        document.querySelector('.shoppingCart').classList.add('shoppingCartNone')
+        // document.querySelector('.shoppingCart').classList.add('shoppingCartNone')
+        shoppingCartAreaPizzasSpace.innerHTML = 'SEM ITENS NO CARRINHO, MONTE O SEU PEDIDO ACIMA!'
+        document.querySelector('#fixed-btn').style.display = 'none'
     }
 
     let totalValue = 0
+    let totalQntd = 0
 
     for (let value of shoppingCart) {
         totalValue += value.price
+        totalQntd += value.qntd
     }
     
     document.querySelector('#totalPrice').innerHTML = `R$ ${totalValue.toFixed(2)}`
-
+    document.querySelector('#fixed-btnRed').innerHTML = totalQntd
 }
 
+document.querySelector('#fixed-btn').addEventListener('click', () => {
+    document.querySelector('.shoppingCart').scrollIntoView()
+})
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function clearCart() {
+document.querySelector('#btn-cancelPurchase').addEventListener('click', () => {
     shoppingCart = []
-}
+    uptadeCart()
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
